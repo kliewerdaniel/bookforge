@@ -1,0 +1,369 @@
+# BookForge Runtime Specification
+# Agentic Technical Book Synthesis from Knowledge Graphs
+
+id: bookforge-runtime
+title: BookForge Runtime - Agentic Technical Book Synthesis
+version: 1.0.0
+status: implemented
+purpose: >
+  Transform structured knowledge graphs into professionally written technical books
+  through a deterministic pipeline of research, planning, synthesis, and publishing.
+  BookForge treats writing as the final stage of a much larger research, planning,
+  and synthesis pipeline, ensuring technical accuracy, internal consistency, and
+  evidence-backed publications.
+
+requirements:
+  - System must import and analyze knowledge graphs from SovereignSpec projects
+  - System must perform semantic survey to discover concepts and relationships
+  - System must organize concepts into coherent themes and structures
+  - System must identify knowledge gaps and perform additional research
+  - System must construct evidence-backed outlines and chapter specifications
+  - System must generate technical illustration specifications
+  - System must produce internally consistent manuscripts
+  - System must review content using multiple specialized agents
+  - System must compile publications into PDF, EPUB, and HTML formats
+  - System must track provenance for all generated content
+  - System must support continuous publishing when knowledge base changes
+  - System must preserve all intermediate artifacts for reproducibility
+
+constraints:
+  - No direct LLM-to-book generation without pipeline stages
+  - All intermediate artifacts must be persisted to disk
+  - Every paragraph must be traceable to source evidence
+  - Pipeline stages must be independently reproducible
+  - Knowledge graph serves as single source of truth
+  - No external API calls required for core functionality
+  - Local-first architecture using Ollama for inference
+  - Must support incremental updates when knowledge graph changes
+
+acceptance_criteria:
+  - Given a valid knowledge graph, system produces complete book blueprint
+  - Given chapter specifications, system generates evidence-backed chapters
+  - Given generated chapters, system produces technical review reports
+  - Given reviewed content, system compiles to PDF/EPUB/HTML formats
+  - Given knowledge graph updates, system identifies affected chapters
+  - Given affected chapters, system regenerates only impacted sections
+  - Given any pipeline stage, system produces inspectable artifacts
+  - Given concept discovery, system identifies relationships and dependencies
+  - Given theme construction, system groups concepts into coherent structures
+  - Given evidence collection, system links every paragraph to sources
+
+api_specification:
+  endpoints:
+    - path: /api/graph/import
+      method: POST
+      request:
+        body:
+          graph_path: string (required)
+          format: string (required)
+      response:
+        200:
+          graph_id: string
+          node_count: integer
+          edge_count: integer
+        400:
+          error: string
+
+    - path: /api/survey/{graph_id}
+      method: POST
+      request:
+        params:
+          graph_id: string (required)
+      response:
+        200:
+          survey_id: string
+          concepts: array
+          relationships: array
+          gaps: array
+        404:
+          error: string
+
+    - path: /api/themes/{survey_id}
+      method: POST
+      request:
+        params:
+          survey_id: string (required)
+      response:
+        200:
+          theme_id: string
+          themes: array
+          concept_groups: array
+
+    - path: /api/blueprint/{theme_id}
+      method: POST
+      request:
+        params:
+          theme_id: string (required)
+          title: string (optional)
+      response:
+        200:
+          blueprint_id: string
+          parts: array
+          chapters: array
+          learning_objectives: array
+
+    - path: /api/chapters/{blueprint_id}
+      method: POST
+      request:
+        params:
+          blueprint_id: string (required)
+          chapter_id: string (optional)
+      response:
+        200:
+          chapter_specs: array
+          evidence_maps: array
+          illustration_specs: array
+
+    - path: /api/generate/{chapter_id}
+      method: POST
+      request:
+        params:
+          chapter_id: string (required)
+      response:
+        200:
+          draft_id: string
+          content: string
+          citations: array
+          word_count: integer
+
+    - path: /api/review/{draft_id}
+      method: POST
+      request:
+        params:
+          draft_id: string (required)
+          review_type: string (required)
+      response:
+        200:
+          review_id: string
+          issues: array
+          recommendations: array
+          score: float
+
+    - path: /api/compile/{book_id}
+      method: POST
+      request:
+        params:
+          book_id: string (required)
+          formats: array (required)
+      response:
+        200:
+          compilation_id: string
+          outputs: array
+          file_paths: array
+
+data_models:
+  - name: KnowledgeGraph
+    fields:
+      - name: id
+        type: string
+        description: Unique graph identifier
+      - name: nodes
+        type: array
+        description: Graph nodes containing concepts and entities
+      - name: edges
+        type: array
+        description: Relationships between nodes
+      - name: metadata
+        type: object
+        description: Graph metadata and provenance
+
+  - name: Concept
+    fields:
+      - name: id
+        type: string
+        description: Unique concept identifier
+      - name: label
+        type: string
+        description: Human-readable concept name
+      - name: description
+        type: string
+        description: Concept definition and context
+      - name: frequency
+        type: integer
+        description: Occurrence count in knowledge graph
+      - name: relationships
+        type: array
+        description: Connected concepts and relationship types
+
+  - name: Theme
+    fields:
+      - name: id
+        type: string
+        description: Unique theme identifier
+      - name: name
+        type: string
+        description: Theme title
+      - name: concepts
+        type: array
+        description: Concepts grouped under this theme
+      - name: dependencies
+        type: array
+        description: Prerequisite themes
+
+  - name: BookBlueprint
+    fields:
+      - name: id
+        type: string
+        description: Unique blueprint identifier
+      - name: title
+        type: string
+        description: Book title
+      - name: parts
+        type: array
+        description: High-level book divisions
+      - name: chapters
+        type: array
+        description: Detailed chapter specifications
+      - name: learning_objectives
+        type: array
+        description: What readers will learn
+
+  - name: ChapterSpecification
+    fields:
+      - name: id
+        type: string
+        description: Unique chapter identifier
+      - name: title
+        type: string
+        description: Chapter title
+      - name: objectives
+        type: array
+        description: Chapter learning objectives
+      - name: evidence_sources
+        type: array
+        description: Required evidence and citations
+      - name: illustration_specs
+        type: array
+        description: Technical figures and diagrams
+      - name: word_count_target
+        type: integer
+        description: Target word count
+
+  - name: EvidenceMap
+    fields:
+      - name: paragraph_id
+        type: string
+        description: Generated paragraph identifier
+      - name: sources
+        type: array
+        description: Supporting evidence sources
+      - name: confidence
+        type: float
+        description: Evidence strength score
+      - name: provenance
+        type: object
+        description: Source tracking information
+
+  - name: ReviewReport
+    fields:
+      - name: id
+        type: string
+        description: Unique review identifier
+      - name: chapter_id
+        type: string
+        description: Chapter being reviewed
+      - name: review_type
+        type: string
+        description: Type of review (technical/editorial/citation)
+      - name: issues
+        type: array
+        description: Identified problems
+      - name: recommendations
+        type: array
+        description: Suggested improvements
+      - name: score
+        type: float
+        description: Quality score (0-1)
+
+test_cases:
+  - id: import_sovereignspec_graph
+    name: import_sovereignspec_graph
+    description: Import SovereignSpec project knowledge graph
+    given: SovereignSpec project with knowledge graph
+    when: POST /api/graph/import
+    then: 200 with graph_id and node/edge counts
+
+  - id: survey_discovers_concepts
+    name: survey_discovers_concepts
+    description: Survey discovers concepts in knowledge graph
+    given: Imported knowledge graph
+    when: POST /api/survey/{graph_id}
+    then: 200 with concepts, relationships, and gaps
+
+  - id: theme_construction_groups_concepts
+    name: theme_construction_groups_concepts
+    description: Theme construction groups concepts into coherent themes
+    given: Survey results with concepts
+    when: POST /api/themes/{survey_id}
+    then: 200 with coherent theme groups
+
+  - id: blueprint_generation
+    name: blueprint_generation
+    description: Generate book blueprint from themes
+    given: Theme structure
+    when: POST /api/blueprint/{theme_id}
+    then: 200 with parts, chapters, and objectives
+
+  - id: chapter_specification_generation
+    name: chapter_specification_generation
+    description: Generate chapter specifications from blueprint
+    given: Book blueprint
+    when: POST /api/chapters/{blueprint_id}
+    then: 200 with chapter specs and evidence maps
+
+  - id: evidence_backed_generation
+    name: evidence_backed_generation
+    description: Generate chapter with evidence backing
+    given: Chapter specification with evidence
+    when: POST /api/generate/{chapter_id}
+    then: 200 with citations and provenance
+
+  - id: technical_review_identifies_issues
+    name: technical_review_identifies_issues
+    description: Technical review identifies issues in chapter
+    given: Generated chapter draft
+    when: POST /api/review/{draft_id}
+    then: 200 with issues and recommendations
+
+  - id: multi_format_compilation
+    name: multi_format_compilation
+    description: Compile book to multiple formats
+    given: Reviewed and finalized book
+    when: POST /api/compile/{book_id}
+    then: 200 with PDF, EPUB, HTML outputs
+
+  - id: incremental_update_on_graph_change
+    name: incremental_update_on_graph_change
+    description: Incremental update when knowledge graph changes
+    given: Updated knowledge graph
+    when: System detects changes
+    then: Only affected chapters regenerated
+
+  - id: artifact_preservation
+    name: artifact_preservation
+    description: Preserve all intermediate artifacts
+    given: Any pipeline stage
+    when: Stage completes
+    then: All intermediate artifacts persisted to disk
+
+references:
+  - title: SovereignSpec Documentation
+    url: https://github.com/kliewerdaniel/sovereignSpec
+  - title: Knowledge Graph Construction Best Practices
+    url: https://www.w3.org/TR/knowledge-graph/
+  - title: Technical Writing Standards
+    url: https://developers.google.com/style
+
+implementation_notes: >
+  BookForge implements a deterministic publishing pipeline with five layers:
+  Knowledge Layer (graph import and analysis), Research Layer (gap identification
+  and evidence collection), Planning Layer (theme construction and blueprint
+  generation), Writing Layer (chapter generation with evidence backing), and
+  Publishing Layer (multi-format compilation). Each layer produces structured
+  artifacts consumed by subsequent stages. The system uses local LLM inference
+  via Ollama for all generation tasks, ensuring no data leaves the machine.
+  Architecture follows modular agent pattern where specialized agents handle
+  specific pipeline stages (Research Analyst, Knowledge Curator, Information
+  Architect, Technical Editor, etc.). All intermediate artifacts are persisted
+  to enable reproducibility, debugging, and incremental updates when the
+  knowledge base evolves.

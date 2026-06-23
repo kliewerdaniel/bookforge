@@ -1,0 +1,344 @@
+# Sovereign AI Technical Book Specification
+# First BookForge Publication from DanielKliewer.com Knowledge Graph
+
+id: sovereign-ai-book
+title: Sovereign AI - A Technical Guide to Local-First Intelligent Systems
+version: 1.0.0
+status: implemented
+purpose: >
+  Synthesize the DanielKliewer.com knowledge graph into a comprehensive technical
+  book covering Sovereign AI, Knowledge Graphs, Dynamic Persona MoE RAG, Context
+  Engineering, Agentic Systems, and related research. The book will serve as both
+  a practical guide and theoretical foundation for building local-first intelligent
+  systems that prioritize sovereignty, privacy, and deterministic behavior.
+
+requirements:
+  - Book must cover Sovereign AI principles and implementation patterns
+  - Book must explain Knowledge Graph construction and utilization
+  - Book must detail Dynamic Persona MoE RAG architecture
+  - Book must address Context Engineering techniques and best practices
+  - Book must describe Agentic System design and coordination
+  - Book must include practical examples and implementation guidance
+  - Book must maintain technical accuracy throughout
+  - Book must provide evidence-backed claims and recommendations
+  - Book must be internally consistent across chapters
+  - Book must include technical illustrations for complex concepts
+  - Book must support multiple output formats (PDF, EPUB, HTML)
+  - Book must be updatable when knowledge base evolves
+
+constraints:
+  - Content must be synthesized from knowledge graph, not copied from blog posts
+  - Every claim must trace to evidence in the knowledge graph or external sources
+  - Technical examples must be functional and reproducible
+  - Illustrations must be generated from structured specifications
+  - Book must not require external API calls for core content generation
+  - Publication must be achievable with local LLM inference via Ollama
+  - All chapters must undergo technical and editorial review
+  - Book structure must follow the BookForge pipeline
+
+acceptance_criteria:
+  - Given knowledge graph from DanielKliewer.com, system produces complete book blueprint
+  - Given book blueprint, system generates all chapter specifications with evidence maps
+  - Given chapter specifications, system generates technically accurate chapters
+  - Given generated chapters, system produces review reports with actionable feedback
+  - Given reviewed content, system compiles to PDF, EPUB, and HTML formats
+  - Given knowledge graph updates, system identifies and regenerates affected chapters
+  - Given any chapter, system can trace every paragraph to supporting evidence
+  - Given complex concepts, system generates appropriate technical illustrations
+  - Given the complete book, system produces glossary and index
+  - Given final compilation, system generates publication-ready documents
+
+api_specification:
+  endpoints:
+    - path: /api/book/sovereign-ai/import
+      method: POST
+      request:
+        body:
+          source_path: string (required)
+          include_external: boolean
+      response:
+        200:
+          book_id: string
+          graph_stats: object
+          topic_coverage: array
+
+    - path: /api/book/sovereign-ai/survey
+      method: POST
+      request:
+        params:
+          book_id: string (required)
+      response:
+        200:
+          survey_results: object
+          major_concepts: array
+          knowledge_gaps: array
+
+    - path: /api/book/sovereign-ai/structure
+      method: POST
+      request:
+        params:
+          book_id: string (required)
+          style: string (optional)
+      response:
+        200:
+          structure_id: string
+          parts: array
+          chapters: array
+
+    - path: /api/book/sovereign-ai/chapters
+      method: GET
+      request:
+        params:
+          book_id: string (required)
+          chapter_id: string (optional)
+      response:
+        200:
+          chapters: array
+          chapter_details: object
+
+    - path: /api/book/sovereign-ai/generate
+      method: POST
+      request:
+        params:
+          book_id: string (required)
+          chapter_id: string (required)
+          style: string (optional)
+      response:
+        200:
+          generation_id: string
+          chapter_content: string
+          word_count: integer
+          citations: array
+
+    - path: /api/book/sovereign-ai/review
+      method: POST
+      request:
+        params:
+          book_id: string (required)
+          chapter_id: string (required)
+          review_types: array (required)
+      response:
+        200:
+          review_reports: array
+          overall_score: float
+          revision_needed: boolean
+
+    - path: /api/book/sovereign-ai/compile
+      method: POST
+      request:
+        params:
+          book_id: string (required)
+          formats: array (required)
+          include_assets: boolean
+      response:
+        200:
+          compilation_id: string
+          output_files: array
+          total_pages: integer
+
+data_models:
+  - name: BookProject
+    fields:
+      - name: id
+        type: string
+        description: Unique book project identifier
+      - name: title
+        type: string
+        description: Book title
+      - name: knowledge_graph_id
+        type: string
+        description: Source knowledge graph
+      - name: status
+        type: string
+        description: Current pipeline stage
+      - name: created_at
+        type: datetime
+        description: Project creation timestamp
+      - name: updated_at
+        type: datetime
+        description: Last update timestamp
+
+  - name: TopicCoverage
+    fields:
+      - name: topic
+        type: string
+        description: Topic or concept name
+      - name: coverage_score
+        type: float
+        description: Coverage completeness (0-1)
+      - name: chapter_references
+        type: array
+        description: Chapters covering this topic
+      - name: evidence_count
+        type: integer
+        description: Supporting evidence pieces
+
+  - name: KnowledgeGap
+    fields:
+      - name: topic
+        type: string
+        description: Identified knowledge gap
+      - name: importance
+        type: string
+        description: Gap importance (critical, important, minor)
+      - name: research_sources
+        type: array
+        description: Potential research sources
+      - name: resolution_strategy
+        type: string
+        description: How to address the gap
+
+  - name: BookStructure
+    fields:
+      - name: id
+        type: string
+        description: Unique structure identifier
+      - name: parts
+        type: array
+        description: High-level book divisions
+      - name: chapters
+        type: array
+        description: Detailed chapter specifications
+      - name: learning_path
+        type: array
+        description: Recommended reading order
+
+  - name: ChapterContent
+    fields:
+      - name: id
+        type: string
+        description: Unique chapter identifier
+      - name: title
+        type: string
+        description: Chapter title
+      - name: content
+        type: string
+        description: Chapter markdown content
+      - name: word_count
+        type: integer
+        description: Chapter word count
+      - name: citations
+        type: array
+        description: Inline citations
+      - name: illustrations
+        type: array
+        description: Technical figures
+
+  - name: ReviewReport
+    fields:
+      - name: id
+        type: string
+        description: Unique review identifier
+      - name: chapter_id
+        type: string
+        description: Chapter being reviewed
+      - name: reviewer_type
+        type: string
+        description: Type of reviewer
+      - name: findings
+        type: array
+        description: Review findings
+      - name: recommendations
+        type: array
+        description: Improvement suggestions
+      - name: score
+        type: float
+        description: Quality score
+
+test_cases:
+  - id: import_danielkliewer_knowledge_graph
+    name: import_danielkliewer_knowledge_graph
+    description: Import DanielKliewer.com knowledge graph
+    given: DanielKliewer.com knowledge graph export
+    when: POST /api/book/sovereign-ai/import
+    then: 200 with book_id and topic coverage analysis
+
+  - id: survey_identifies_sovereign_ai_concepts
+    name: survey_identifies_sovereign_ai_concepts
+    description: Survey identifies Sovereign AI concepts
+    given: Imported knowledge graph
+    when: POST /api/book/sovereign-ai/survey
+    then: 200 with Sovereign AI, KG, MoE RAG, Context Engineering concepts
+
+  - id: structure_creates_coherent_parts
+    name: structure_creates_coherent_parts
+    description: Create coherent book structure
+    given: Survey results
+    when: POST /api/book/sovereign-ai/structure
+    then: 200 with logical book parts and chapter flow
+
+  - id: chapter_generation_with_evidence
+    name: chapter_generation_with_evidence
+    description: Generate chapter with evidence
+    given: Chapter specification with evidence sources
+    when: POST /api/book/sovereign-ai/generate
+    then: 200 with technical content and citations
+
+  - id: technical_review_validates_accuracy
+    name: technical_review_validates_accuracy
+    description: Technical review validates accuracy
+    given: Generated chapter
+    when: POST /api/book/sovereign-ai/review
+    then: 200 with technical accuracy assessment
+
+  - id: editorial_review_enhances_readability
+    name: editorial_review_enhances_readability
+    description: Editorial review enhances readability
+    given: Generated chapter
+    when: POST /api/book/sovereign-ai/review
+    then: 200 with editorial improvements
+
+  - id: multi_format_output_generation
+    name: multi_format_output_generation
+    description: Generate multi-format output
+    given: Reviewed and finalized book
+    when: POST /api/book/sovereign-ai/compile
+    then: 200 with PDF, EPUB, HTML files
+
+  - id: incremental_update_on_new_content
+    name: incremental_update_on_new_content
+    description: Incremental update on new content
+    given: New knowledge graph content
+    when: System processes updates
+    then: Only affected chapters regenerated
+
+  - id: glossary_and_index_generation
+    name: glossary_and_index_generation
+    description: Generate glossary and index
+    given: Complete book content
+    when: System generates supplementary materials
+    then: Comprehensive glossary and index created
+
+  - id: publication_quality_output
+    name: publication_quality_output
+    description: Generate publication quality output
+    given: Final compiled book
+    when: User opens output files
+    then: Professional publication quality achieved
+
+references:
+  - title: DanielKliewer.com Knowledge Graph
+    url: https://danielkliewer.com
+  - title: Sovereign AI Research
+    url: https://arxiv.org/search/?query=sovereign+AI
+  - title: Knowledge Graph Construction
+    url: https://www.w3.org/wiki/Graphs_-_Knowledge_Graph
+  - title: MoE Architecture Research
+    url: https://arxiv.org/search/?query=mixture+of+experts
+  - title: Context Engineering Principles
+    url: https://www.promptingguide.ai/techniques/contextengineering
+
+implementation_notes: >
+  This specification defines the first concrete implementation of BookForge:
+  a comprehensive technical book synthesized from DanielKliewer.com's knowledge
+  graph. The book covers six major themes: Sovereign AI principles, Knowledge
+  Graph construction and utilization, Dynamic Persona MoE RAG architecture,
+  Context Engineering techniques, Agentic System design, and Future AI
+  Architectures. Each theme becomes a book part containing multiple chapters.
+  The runtime will use BookForge's pipeline to survey the knowledge graph,
+  discover concepts, construct themes, build blueprint, generate chapter
+  specifications with evidence maps, create technical illustrations, generate
+  chapters with citations, and compile to multiple formats. All content must
+  be synthesized from the knowledge graph rather than copied from original
+  blog posts. The system will track provenance for every paragraph and
+  support incremental updates as the knowledge base evolves.

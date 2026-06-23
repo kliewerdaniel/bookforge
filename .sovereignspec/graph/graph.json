@@ -1,0 +1,288 @@
+{
+  "nodes": [
+    {
+      "id": "spec-bookforge-runtime",
+      "label": "BookForge Runtime",
+      "type": "Specification",
+      "properties": {
+        "version": "1.0.0",
+        "status": "active"
+      }
+    },
+    {
+      "id": "spec-sovereign-ai-book",
+      "label": "Sovereign AI Book",
+      "type": "Specification",
+      "properties": {
+        "version": "1.0.0",
+        "status": "active"
+      }
+    },
+    {
+      "id": "mod-knowledge-graph",
+      "label": "Knowledge Graph Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/knowledge"
+      }
+    },
+    {
+      "id": "mod-research",
+      "label": "Research Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/research"
+      }
+    },
+    {
+      "id": "mod-planning",
+      "label": "Planning Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/planning"
+      }
+    },
+    {
+      "id": "mod-writing",
+      "label": "Writing Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/writing"
+      }
+    },
+    {
+      "id": "mod-publishing",
+      "label": "Publishing Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/publishing"
+      }
+    },
+    {
+      "id": "mod-agents",
+      "label": "Agents Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/agents"
+      }
+    },
+    {
+      "id": "mod-api",
+      "label": "API Module",
+      "type": "Module",
+      "properties": {
+        "path": "src/bookforge/api"
+      }
+    },
+    {
+      "id": "ep-import-graph",
+      "label": "POST /api/graph/import",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/graph/import"
+      }
+    },
+    {
+      "id": "ep-survey",
+      "label": "POST /api/survey/{graph_id}",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/survey/{graph_id}"
+      }
+    },
+    {
+      "id": "ep-themes",
+      "label": "POST /api/themes/{survey_id}",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/themes/{survey_id}"
+      }
+    },
+    {
+      "id": "ep-blueprint",
+      "label": "POST /api/blueprint/{theme_id}",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/blueprint/{theme_id}"
+      }
+    },
+    {
+      "id": "ep-generate",
+      "label": "POST /api/generate/{chapter_id}",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/generate/{chapter_id}"
+      }
+    },
+    {
+      "id": "ep-review",
+      "label": "POST /api/review/{draft_id}",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/review/{draft_id}"
+      }
+    },
+    {
+      "id": "ep-compile",
+      "label": "POST /api/compile/{book_id}",
+      "type": "Endpoint",
+      "properties": {
+        "method": "POST",
+        "path": "/api/compile/{book_id}"
+      }
+    },
+    {
+      "id": "adr-001",
+      "label": "Local-First Architecture",
+      "type": "ADR",
+      "properties": {
+        "status": "accepted"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-spec-mod-knowledge",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-knowledge-graph",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-spec-mod-research",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-research",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-spec-mod-planning",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-planning",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-spec-mod-writing",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-writing",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-spec-mod-publishing",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-publishing",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-spec-mod-agents",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-agents",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-spec-mod-api",
+      "source": "spec-bookforge-runtime",
+      "target": "mod-api",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-book-uses-runtime",
+      "source": "spec-sovereign-ai-book",
+      "target": "spec-bookforge-runtime",
+      "type": "USES"
+    },
+    {
+      "id": "edge-mod-knowledge-research",
+      "source": "mod-knowledge-graph",
+      "target": "mod-research",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-mod-research-planning",
+      "source": "mod-research",
+      "target": "mod-planning",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-mod-planning-writing",
+      "source": "mod-planning",
+      "target": "mod-writing",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-mod-writing-publishing",
+      "source": "mod-writing",
+      "target": "mod-publishing",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "id": "edge-mod-agents-writing",
+      "source": "mod-agents",
+      "target": "mod-writing",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-mod-api-all",
+      "source": "mod-api",
+      "target": "mod-knowledge-graph",
+      "type": "REFERENCES"
+    },
+    {
+      "id": "edge-ep-import-knowledge",
+      "source": "ep-import-graph",
+      "target": "mod-knowledge-graph",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-ep-survey-knowledge",
+      "source": "ep-survey",
+      "target": "mod-knowledge-graph",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-ep-themes-planning",
+      "source": "ep-themes",
+      "target": "mod-planning",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-ep-blueprint-planning",
+      "source": "ep-blueprint",
+      "target": "mod-planning",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-ep-generate-writing",
+      "source": "ep-generate",
+      "target": "mod-writing",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-ep-review-agents",
+      "source": "ep-review",
+      "target": "mod-agents",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-ep-compile-publishing",
+      "source": "ep-compile",
+      "target": "mod-publishing",
+      "type": "IMPLEMENTS"
+    },
+    {
+      "id": "edge-adr-architecture",
+      "source": "adr-001",
+      "target": "spec-bookforge-runtime",
+      "type": "VALIDATES"
+    }
+  ],
+  "metadata": {
+    "project": "BookForge",
+    "version": "0.1.0",
+    "created": "2026-06-23"
+  }
+}
