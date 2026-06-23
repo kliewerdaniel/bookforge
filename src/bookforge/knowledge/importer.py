@@ -31,6 +31,8 @@ class GraphImporter:
 
         if format == "json":
             return self._import_json(path)
+        elif format == "danielkliewer":
+            return self._import_danielkliewer(path)
         elif format == "yaml":
             return self._import_yaml(path)
         elif format == "sovereignspec":
@@ -44,6 +46,13 @@ class GraphImporter:
         """Detect the format of a graph file."""
         suffix = path.suffix.lower()
         if suffix == ".json":
+            # Check if it's the DanielKliewer.com format
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if "nodes" in data and len(data.get("nodes", [])) > 0:
+                    first_node = data["nodes"][0]
+                    if "type" in first_node and "provenance" in first_node:
+                        return "danielkliewer"
             return "json"
         elif suffix in (".yaml", ".yml"):
             return "yaml"
@@ -289,4 +298,194 @@ class GraphImporter:
             nodes=nodes,
             edges=edges,
             metadata={"source": "markdown", "file": str(path)},
+        )
+
+    def _import_danielkliewer(self, path: Path) -> KnowledgeGraph:
+        """Import a graph from DanielKliewer.com format.
+
+        This format has nodes with types (Article, Chunk, Concept, etc.)
+        and properties including filename, date, tags, and text content.
+        """
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        nodes = []
+        edges = []
+
+        # Track articles and their chunks for relationship building
+        articles = {}
+        chunks = {}
+        concepts = {}
+        projects = {}
+        tools = {}
+        companies = {}
+        libraries = {}
+        people = {}
+        entities = {}
+
+        for node_data in data.get("nodes", []):
+            node_id = node_data["id"]
+            node_type = node_data.get("type", "concept")
+            label = node_data.get("label", node_id)
+            properties = node_data.get("properties", {})
+
+            # Create the node
+            node = GraphNode(
+                id=node_id,
+                label=label,
+                node_type=node_type.lower(),
+                properties=properties,
+            )
+            nodes.append(node)
+
+            # Track by type for relationship building
+            if node_type == "Article":
+                articles[node_id] = node
+            elif node_type == "Chunk":
+                chunks[node_id] = node
+            elif node_type == "Concept":
+                concepts[node_id] = node
+            elif node_type == "Project":
+                projects[node_id] = node
+            elif node_type == "Tool":
+                tools[node_id] = node
+            elif node_type == "Company":
+                companies[node_id] = node
+            elif node_type == "Library":
+                libraries[node_id] = node
+            elif node_type == "Person":
+                people[node_id] = node
+            elif node_type == "Entity":
+                entities[node_id] = node
+
+        # Build relationships based on the graph structure
+        edge_id_counter = 0
+
+        # Connect chunks to their parent articles
+        for chunk_id, chunk in chunks.items():
+            chunk_props = chunk.properties
+            # Find the article this chunk belongs to
+            for article_id, article in articles.items():
+                article_props = article.properties
+                if article_props.get("filename") and chunk_props.get("text"):
+                    # Simple heuristic: if chunk text appears in article context
+                    edges.append(
+                        GraphEdge(
+                            id=f"edge-{edge_id_counter}",
+                            source=article_id,
+                            target=chunk_id,
+                            edge_type="contains",
+                            properties={"relationship": "article_contains_chunk"},
+                        )
+                    )
+                    edge_id_counter += 1
+                    break
+
+        # Connect concepts to articles based on tags
+        for article_id, article in articles.items():
+            article_tags = article.properties.get("tags", [])
+            for tag in article_tags:
+                # Find or create concept for this tag
+                concept_id = f"concept-{tag.lower().replace(' ', '-')}"
+                if concept_id in concepts:
+                    edges.append(
+                        GraphEdge(
+                            id=f"edge-{edge_id_counter}",
+                            source=article_id,
+                            target=concept_id,
+                            edge_type="discusses",
+                            properties={"tag": tag},
+                        )
+                    )
+                    edge_id_counter += 1
+
+        # Connect tools to projects
+        for tool_id, tool in tools.items():
+            for project_id, project in projects.items():
+                # Simple heuristic: if tool name appears in project context
+                tool_name = tool.label.lower()
+                project_name = project.label.lower()
+                if tool_name in project_name or project_name in tool_name:
+                    edges.append(
+                        GraphEdge(
+                            id=f"edge-{edge_id_counter}",
+                            source=project_id,
+                            target=tool_id,
+                            edge_type="uses",
+                        )
+                    )
+                    edge_id_counter += 1
+
+        # Connect libraries to tools
+        for library_id, library in libraries.items():
+            for tool_id, tool in tools.items():
+                library_name = library.label.lower()
+                tool_name = tool.label.lower()
+                if library_name in tool_name or tool_name in library_name:
+                    edges.append(
+                        GraphEdge(
+                            id=f"edge-{edge_id_counter}",
+                            source=tool_id,
+                            target=library_id,
+                            edge_type="uses",
+                        )
+                    )
+                    edge_id_counter += 1
+
+        # Connect companies to projects
+        for company_id, company in companies.items():
+            for project_id, project in projects.items():
+                company_name = company.label.lower()
+                project_name = project.label.lower()
+                if company_name in project_name or project_name in company_name:
+                    edges.append(
+                        GraphEdge(
+                            id=f"edge-{edge_id_counter}",
+                            source=company_id,
+                            target=project_id,
+                            edge_type="associated_with",
+                        )
+                    )
+                    edge_id_counter += 1
+
+        # Connect people to articles
+        for person_id, person in people.items():
+            for article_id, article in articles.items():
+                person_name = person.label.lower()
+                article_title = article.label.lower()
+                if person_name in article_title:
+                    edges.append(
+                        GraphEdge(
+                            id=f"edge-{edge_id_counter}",
+                            source=person_id,
+                            target=article_id,
+                            edge_type="authored",
+                        )
+                    )
+                    edge_id_counter += 1
+
+        # Build metadata
+        metadata = {
+            "source": "danielkliewer",
+            "file": str(path),
+            "node_counts": {
+                "articles": len(articles),
+                "chunks": len(chunks),
+                "concepts": len(concepts),
+                "projects": len(projects),
+                "tools": len(tools),
+                "companies": len(companies),
+                "libraries": len(libraries),
+                "people": len(people),
+                "entities": len(entities),
+            },
+        }
+
+        return KnowledgeGraph(
+            id="danielkliewer",
+            name="DanielKliewer.com Knowledge Graph",
+            description="Knowledge graph extracted from DanielKliewer.com blog posts covering Sovereign AI, Knowledge Graphs, Dynamic Persona MoE RAG, Context Engineering, and Agentic Systems",
+            nodes=nodes,
+            edges=edges,
+            metadata=metadata,
         )

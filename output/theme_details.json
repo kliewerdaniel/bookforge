@@ -1,0 +1,111 @@
+{
+  "themes": [
+    {
+      "name": "Local LLMs",
+      "article_count": 47,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration"
+      ]
+    },
+    {
+      "name": "AI Development",
+      "article_count": 41,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration",
+        "Complete Full-Stack AI Persona Generator: Django REST API + React Frontend with Ollama Integration",
+        "Complete Guide: Migrating from OpenAI to XAI API in Django + React Full-Stack Applications"
+      ]
+    },
+    {
+      "name": "Web Development",
+      "article_count": 27,
+      "articles": [
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration",
+        "Complete Full-Stack AI Persona Generator: Django REST API + React Frontend with Ollama Integration",
+        "Complete Guide: Migrating from OpenAI to XAI API in Django + React Full-Stack Applications",
+        "GhostWriter: Complete AI Writing Assistant - Django + React Full-Stack Tutorial & Setup Guide",
+        "Developing a Toxicity Detection Communication App: Promoting Positive Dialogue with AI Ethics, React, and TensorFlow.js"
+      ]
+    },
+    {
+      "name": "Dynamic Persona MoE RAG",
+      "article_count": 23,
+      "articles": [
+        "Complete Guide: Building Robust RAG Systems with LangChain & OpenAI - From Setup to Advanced Implementation",
+        "Complete Guide: Building Persona-Aware RAG Systems with Pydantic AI Agents & Tools - Custom Retrieval & Generation",
+        "Advanced PersonaGen: Architecting Next-Generation AI Systems with Reinforcement Learning, Retrieval-Augmented Generation, and Multi-Agent Persona Frameworks",
+        "Building an Advanced AI Image-to-Book Pipeline: Multimodal Storytelling with LLaVA, ChromaDB, and Recursive Narrative Generation Using Ollama",
+        "Complete Guide: Building a Personalized AI Learning System with Local LLMs, Knowledge Graphs, and Adaptive Learning"
+      ]
+    },
+    {
+      "name": "Agentic Systems",
+      "article_count": 18,
+      "articles": [
+        "Complete Guide: Building AI Agent-Based Cross-Platform Content Generator for Automated Social Media Distribution",
+        "Complete Guide: Building Enhanced AI Persona Generator with Python & OpenAI - From Analysis to Response",
+        "Tech Company Orchestrator: Simulate Full-Stack Development Workflow with AI Agents",
+        "Automated Reddit Content Analytics Pipeline: Transforming Social Media Insights into Structured Blog Posts with AI Agents and Local LLMs",
+        "Complete Ollama Smolagents Integration Tutorial: Building Open Deep Research Agents with Local LLMs for Autonomous AI Research and Tool Usage"
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "article_count": 17,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "AI-Generated Deepfakes: Complete Guide to Persona-Based Content Creation and Ethical Implications",
+        "Complete Guide to Building a Data Annotation Platform Company: From Startup to Scale",
+        "RLHF-Lab: Complete Guide to Building an AI Data Annotation Platform Company from Scratch"
+      ]
+    },
+    {
+      "name": "Sovereign AI",
+      "article_count": 13,
+      "articles": [
+        "The Complete Guide to VSCode for Free Technical Blogging: From Setup to Publication",
+        "Breaking Free from ChatGPT: How to Take Back Your AI Sovereignty",
+        "Architecture as Autonomy",
+        "The Sovereignty Manifesto: Why Local Data is the Last Bastion of Human Agency",
+        "The Architecture of Autonomy: Why the Divergence Between Corporate and Sovereign AI Is the Most Important Design Decision of Our Generation"
+      ]
+    },
+    {
+      "name": "Privacy & Security",
+      "article_count": 11,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Privacy Policy for AI Filename Generator Chrome Extension: Complete Data Protection Guidelines for Local AI Processing Using Ollama"
+      ]
+    },
+    {
+      "name": "Knowledge Graphs",
+      "article_count": 10,
+      "articles": [
+        "Building an AI-Powered Interactive Learning Platform",
+        "Complete Guide: Building a Personalized AI Learning System with Local LLMs, Knowledge Graphs, and Adaptive Learning",
+        "Building an AI-Driven Personalized Learning Platform: Dynamic Lessons with Local LLMs and Knowledge Graphs",
+        "Unlocking AI-Powered Productivity: Two Essential Guides for Building Custom AI Personas and Agentic Knowledge Graphs",
+        "Building and Evaluating a Local-First Research Assistant with GraphRAG and vero-eval"
+      ]
+    }
+  ],
+  "learning_objectives": [
+    "Understand sovereign AI principles and local-first architectures",
+    "Design and implement knowledge graphs for technical documentation",
+    "Build agentic systems using local LLMs and MCP",
+    "Implement Dynamic Persona MoE RAG systems",
+    "Apply context engineering techniques for AI systems",
+    "Deploy privacy-preserving AI solutions"
+  ]
+}

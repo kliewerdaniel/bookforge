@@ -1,0 +1,15 @@
+{
+  "id": "book-20260623-082109",
+  "title": "Sovereign AI: Building Local-First Intelligent Systems",
+  "formats": {
+    "html": "output/book-20260623-082109.html"
+  },
+  "metadata": {
+    "blueprint_id": "blueprint-sovereign-ai",
+    "chapter_count": 3,
+    "total_word_count": 207,
+    "formats": [
+      "html"
+    ]
+  }
+}

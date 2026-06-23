@@ -1,0 +1,374 @@
+{
+  "id": "blueprint-sovereign-ai",
+  "title": "Sovereign AI: Building Local-First Intelligent Systems",
+  "description": "A comprehensive guide to building sovereign AI systems using local-first architectures, knowledge graphs, and agentic systems, synthesized from the DanielKliewer.com knowledge graph.",
+  "parts": [
+    {
+      "id": "part-0",
+      "title": "Local LLMs",
+      "description": "Part covering Local LLMs concepts and implementations",
+      "chapters": [
+        "chapter-0",
+        "chapter-1",
+        "chapter-2"
+      ]
+    },
+    {
+      "id": "part-1",
+      "title": "AI Development",
+      "description": "Part covering AI Development concepts and implementations",
+      "chapters": [
+        "chapter-3",
+        "chapter-4",
+        "chapter-5"
+      ]
+    },
+    {
+      "id": "part-2",
+      "title": "Web Development",
+      "description": "Part covering Web Development concepts and implementations",
+      "chapters": [
+        "chapter-6",
+        "chapter-7",
+        "chapter-8"
+      ]
+    },
+    {
+      "id": "part-3",
+      "title": "Dynamic Persona MoE RAG",
+      "description": "Part covering Dynamic Persona MoE RAG concepts and implementations",
+      "chapters": [
+        "chapter-9",
+        "chapter-10",
+        "chapter-11"
+      ]
+    },
+    {
+      "id": "part-4",
+      "title": "Agentic Systems",
+      "description": "Part covering Agentic Systems concepts and implementations",
+      "chapters": [
+        "chapter-12",
+        "chapter-13",
+        "chapter-14"
+      ]
+    },
+    {
+      "id": "part-5",
+      "title": "Machine Learning",
+      "description": "Part covering Machine Learning concepts and implementations",
+      "chapters": [
+        "chapter-15",
+        "chapter-16",
+        "chapter-17"
+      ]
+    },
+    {
+      "id": "part-6",
+      "title": "Sovereign AI",
+      "description": "Part covering Sovereign AI concepts and implementations",
+      "chapters": [
+        "chapter-18",
+        "chapter-19"
+      ]
+    },
+    {
+      "id": "part-7",
+      "title": "Privacy & Security",
+      "description": "Part covering Privacy & Security concepts and implementations",
+      "chapters": [
+        "chapter-20",
+        "chapter-21"
+      ]
+    },
+    {
+      "id": "part-8",
+      "title": "Knowledge Graphs",
+      "description": "Part covering Knowledge Graphs concepts and implementations",
+      "chapters": [
+        "chapter-22",
+        "chapter-23"
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-0",
+      "title": "Local LLMs - Chapter 1",
+      "theme_id": "part-0",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection"
+      ]
+    },
+    {
+      "id": "chapter-1",
+      "title": "Local LLMs - Chapter 2",
+      "theme_id": "part-0",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection"
+      ]
+    },
+    {
+      "id": "chapter-2",
+      "title": "Local LLMs - Chapter 3",
+      "theme_id": "part-0",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection"
+      ]
+    },
+    {
+      "id": "chapter-3",
+      "title": "AI Development - Chapter 1",
+      "theme_id": "part-1",
+      "word_count_target": 5000,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration"
+      ]
+    },
+    {
+      "id": "chapter-4",
+      "title": "AI Development - Chapter 2",
+      "theme_id": "part-1",
+      "word_count_target": 5000,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration"
+      ]
+    },
+    {
+      "id": "chapter-5",
+      "title": "AI Development - Chapter 3",
+      "theme_id": "part-1",
+      "word_count_target": 5000,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration"
+      ]
+    },
+    {
+      "id": "chapter-6",
+      "title": "Web Development - Chapter 1",
+      "theme_id": "part-2",
+      "word_count_target": 5000,
+      "articles": [
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration",
+        "Complete Full-Stack AI Persona Generator: Django REST API + React Frontend with Ollama Integration",
+        "Complete Guide: Migrating from OpenAI to XAI API in Django + React Full-Stack Applications"
+      ]
+    },
+    {
+      "id": "chapter-7",
+      "title": "Web Development - Chapter 2",
+      "theme_id": "part-2",
+      "word_count_target": 5000,
+      "articles": [
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration",
+        "Complete Full-Stack AI Persona Generator: Django REST API + React Frontend with Ollama Integration",
+        "Complete Guide: Migrating from OpenAI to XAI API in Django + React Full-Stack Applications"
+      ]
+    },
+    {
+      "id": "chapter-8",
+      "title": "Web Development - Chapter 3",
+      "theme_id": "part-2",
+      "word_count_target": 5000,
+      "articles": [
+        "Building Full-Stack AI Persona Generator: Complete Django + React Tutorial with LLM Integration",
+        "Complete Full-Stack AI Persona Generator: Django REST API + React Frontend with Ollama Integration",
+        "Complete Guide: Migrating from OpenAI to XAI API in Django + React Full-Stack Applications"
+      ]
+    },
+    {
+      "id": "chapter-9",
+      "title": "Dynamic Persona MoE RAG - Chapter 1",
+      "theme_id": "part-3",
+      "word_count_target": 5000,
+      "articles": [
+        "Complete Guide: Building Robust RAG Systems with LangChain & OpenAI - From Setup to Advanced Implementation",
+        "Complete Guide: Building Persona-Aware RAG Systems with Pydantic AI Agents & Tools - Custom Retrieval & Generation",
+        "Advanced PersonaGen: Architecting Next-Generation AI Systems with Reinforcement Learning, Retrieval-Augmented Generation, and Multi-Agent Persona Frameworks"
+      ]
+    },
+    {
+      "id": "chapter-10",
+      "title": "Dynamic Persona MoE RAG - Chapter 2",
+      "theme_id": "part-3",
+      "word_count_target": 5000,
+      "articles": [
+        "Complete Guide: Building Robust RAG Systems with LangChain & OpenAI - From Setup to Advanced Implementation",
+        "Complete Guide: Building Persona-Aware RAG Systems with Pydantic AI Agents & Tools - Custom Retrieval & Generation",
+        "Advanced PersonaGen: Architecting Next-Generation AI Systems with Reinforcement Learning, Retrieval-Augmented Generation, and Multi-Agent Persona Frameworks"
+      ]
+    },
+    {
+      "id": "chapter-11",
+      "title": "Dynamic Persona MoE RAG - Chapter 3",
+      "theme_id": "part-3",
+      "word_count_target": 5000,
+      "articles": [
+        "Complete Guide: Building Robust RAG Systems with LangChain & OpenAI - From Setup to Advanced Implementation",
+        "Complete Guide: Building Persona-Aware RAG Systems with Pydantic AI Agents & Tools - Custom Retrieval & Generation",
+        "Advanced PersonaGen: Architecting Next-Generation AI Systems with Reinforcement Learning, Retrieval-Augmented Generation, and Multi-Agent Persona Frameworks"
+      ]
+    },
+    {
+      "id": "chapter-12",
+      "title": "Agentic Systems - Chapter 1",
+      "theme_id": "part-4",
+      "word_count_target": 5000,
+      "articles": [
+        "Complete Guide: Building AI Agent-Based Cross-Platform Content Generator for Automated Social Media Distribution",
+        "Complete Guide: Building Enhanced AI Persona Generator with Python & OpenAI - From Analysis to Response",
+        "Tech Company Orchestrator: Simulate Full-Stack Development Workflow with AI Agents"
+      ]
+    },
+    {
+      "id": "chapter-13",
+      "title": "Agentic Systems - Chapter 2",
+      "theme_id": "part-4",
+      "word_count_target": 5000,
+      "articles": [
+        "Complete Guide: Building AI Agent-Based Cross-Platform Content Generator for Automated Social Media Distribution",
+        "Complete Guide: Building Enhanced AI Persona Generator with Python & OpenAI - From Analysis to Response",
+        "Tech Company Orchestrator: Simulate Full-Stack Development Workflow with AI Agents"
+      ]
+    },
+    {
+      "id": "chapter-14",
+      "title": "Agentic Systems - Chapter 3",
+      "theme_id": "part-4",
+      "word_count_target": 5000,
+      "articles": [
+        "Complete Guide: Building AI Agent-Based Cross-Platform Content Generator for Automated Social Media Distribution",
+        "Complete Guide: Building Enhanced AI Persona Generator with Python & OpenAI - From Analysis to Response",
+        "Tech Company Orchestrator: Simulate Full-Stack Development Workflow with AI Agents"
+      ]
+    },
+    {
+      "id": "chapter-15",
+      "title": "Machine Learning - Chapter 1",
+      "theme_id": "part-5",
+      "word_count_target": 5000,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "AI-Generated Deepfakes: Complete Guide to Persona-Based Content Creation and Ethical Implications"
+      ]
+    },
+    {
+      "id": "chapter-16",
+      "title": "Machine Learning - Chapter 2",
+      "theme_id": "part-5",
+      "word_count_target": 5000,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "AI-Generated Deepfakes: Complete Guide to Persona-Based Content Creation and Ethical Implications"
+      ]
+    },
+    {
+      "id": "chapter-17",
+      "title": "Machine Learning - Chapter 3",
+      "theme_id": "part-5",
+      "word_count_target": 5000,
+      "articles": [
+        "Building AI Agents: From Code to Digital \u00dcbermensch - Complete Guide to Autonomous Agent Architecture",
+        "Building AI Persona-Based Content Generator: Complete Python Tutorial with Jekyll Integration",
+        "AI-Generated Deepfakes: Complete Guide to Persona-Based Content Creation and Ethical Implications"
+      ]
+    },
+    {
+      "id": "chapter-18",
+      "title": "Sovereign AI - Chapter 1",
+      "theme_id": "part-6",
+      "word_count_target": 5000,
+      "articles": [
+        "The Complete Guide to VSCode for Free Technical Blogging: From Setup to Publication",
+        "Breaking Free from ChatGPT: How to Take Back Your AI Sovereignty",
+        "Architecture as Autonomy"
+      ]
+    },
+    {
+      "id": "chapter-19",
+      "title": "Sovereign AI - Chapter 2",
+      "theme_id": "part-6",
+      "word_count_target": 5000,
+      "articles": [
+        "The Complete Guide to VSCode for Free Technical Blogging: From Setup to Publication",
+        "Breaking Free from ChatGPT: How to Take Back Your AI Sovereignty",
+        "Architecture as Autonomy"
+      ]
+    },
+    {
+      "id": "chapter-20",
+      "title": "Privacy & Security - Chapter 1",
+      "theme_id": "part-7",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection"
+      ]
+    },
+    {
+      "id": "chapter-21",
+      "title": "Privacy & Security - Chapter 2",
+      "theme_id": "part-7",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection",
+        "Building an AI-Powered Journal Local LLMs for Private, Intelligent Reflection"
+      ]
+    },
+    {
+      "id": "chapter-22",
+      "title": "Knowledge Graphs - Chapter 1",
+      "theme_id": "part-8",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Interactive Learning Platform",
+        "Complete Guide: Building a Personalized AI Learning System with Local LLMs, Knowledge Graphs, and Adaptive Learning",
+        "Building an AI-Driven Personalized Learning Platform: Dynamic Lessons with Local LLMs and Knowledge Graphs"
+      ]
+    },
+    {
+      "id": "chapter-23",
+      "title": "Knowledge Graphs - Chapter 2",
+      "theme_id": "part-8",
+      "word_count_target": 5000,
+      "articles": [
+        "Building an AI-Powered Interactive Learning Platform",
+        "Complete Guide: Building a Personalized AI Learning System with Local LLMs, Knowledge Graphs, and Adaptive Learning",
+        "Building an AI-Driven Personalized Learning Platform: Dynamic Lessons with Local LLMs and Knowledge Graphs"
+      ]
+    }
+  ],
+  "learning_objectives": [
+    "Understand sovereign AI principles and local-first architectures",
+    "Design and implement knowledge graphs for technical documentation",
+    "Build agentic systems using local LLMs and MCP",
+    "Implement Dynamic Persona MoE RAG systems",
+    "Apply context engineering techniques for AI systems",
+    "Deploy privacy-preserving AI solutions"
+  ],
+  "metadata": {
+    "source": "danielkliewer.com",
+    "article_count": 139,
+    "theme_count": 9,
+    "total_target_words": 120000
+  }
+}

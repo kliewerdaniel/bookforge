@@ -111,3 +111,34 @@ Files to create/modify:
   - examples/demo.py
 Dependencies: Task 1-10
 Acceptance: Demo script runs successfully
+
+## [P] Task 12: Integrate with DanielKliewer.com Data
+Status: [x] completed
+Completed: 2026-06-23 — GraphImporter updated, analysis scripts created, blueprint generated
+Files to create/modify:
+  - src/bookforge/knowledge/importer.py
+  - examples/analyze_graph_simple.py
+  - examples/generate_blueprint.py
+  - examples/generate_chapters.py
+Dependencies: Task 2
+Acceptance: Successfully import and analyze DanielKliewer.com knowledge graph
+
+## [P] Task 13: Generate Book Blueprint from Real Data
+Status: [x] completed
+Completed: 2026-06-23 — Book blueprint generated with 9 parts and 24 chapters
+Files to create/modify:
+  - output/book_blueprint.json
+  - output/theme_details.json
+Dependencies: Task 12
+Acceptance: Book blueprint generated from DanielKliewer.com themes
+
+## [P] Task 14: Generate Sample Chapters
+Status: [x] completed
+Completed: 2026-06-23 — Sample chapters generated with evidence backing
+Files to create/modify:
+  - output/chapter_1.json
+  - output/chapter_2.json
+  - output/chapter_3.json
+  - output/book-*.html
+Dependencies: Task 13
+Acceptance: Sample chapters generated and compiled to HTML
